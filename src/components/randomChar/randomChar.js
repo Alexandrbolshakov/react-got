@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import './randomChar.css';
 import styled from 'styled-components';
-import GotService from '../../service/gotService';
+import gotService from '../../service/gotService';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
 
@@ -21,7 +21,7 @@ const SpanTerm = styled.span`
 `;
 export default class RandomChar extends Component {
 
-    gotService = new GotService();
+    gotService = new gotService();
 
     state = {
         char:{},
@@ -50,7 +50,7 @@ export default class RandomChar extends Component {
         })}
     updateChar = () => {
         const id =Math.floor(Math.random()*140+25); //25-140
-        this.gotService.getCharacterById(id)
+        this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError)
     }
